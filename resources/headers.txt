@@ -1,0 +1,7 @@
+Marka pojazdu
+Model pojazdu
+Rok produkcji
+Bezwypadkowy
+Moc
+Stan
+Przebieg

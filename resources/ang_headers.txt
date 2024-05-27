@@ -1,0 +1,7 @@
+brand
+model
+production_year
+accident_free
+power
+exploitation
+course
