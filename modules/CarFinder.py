@@ -8,7 +8,6 @@ class CarFinder:
 
     def extract_url_from_html_tag (self, html_tag):
         html_tag = html_tag.removeprefix('<a href="')
-        html_tag = html_tag.removesuffix('.html*')
         return html_tag[0:html_tag.find('"')]
     
     def look_for_new_car(self):
