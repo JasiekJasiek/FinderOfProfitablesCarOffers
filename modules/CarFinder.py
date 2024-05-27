@@ -10,8 +10,8 @@ class CarFinder:
     def look_for_new_car(self):
         soup = BeautifulSoup(self.response.text, "html.parser")
         offer1 = soup.find("h1")
-        url = str(offer1.find("a"))
-        url = url.removeprefix('<a href="')
-        url = url.removesuffix('.html*')
-        url = url[0:url.find('"')]
+        offer1 = str(offer1.find("a"))
+        offer1 = offer1.removeprefix('<a href="')
+        offer1 = offer1.removesuffix('.html*')
+        url = offer1[0:url.find('"')]
         return(url)
