@@ -67,7 +67,4 @@ class Scraper:
         self.remove_none(atributes)
         atributes = self.adjust_atributes(atributes)
         return Car(atributes)
-
-    
-
-    
+        
