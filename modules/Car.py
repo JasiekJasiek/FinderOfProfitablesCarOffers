@@ -10,9 +10,3 @@ class Car:
         self.model = atributes[ 5 ]
         self.price = atributes[ 6 ]
         self.production_year = atributes[ 7 ]
-        
-       
-        
-
-
-
