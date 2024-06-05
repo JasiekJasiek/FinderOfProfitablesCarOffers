@@ -39,6 +39,8 @@ class Scraper:
             arr.remove(None)
 
     def convert_accident_free(self, atribute: str) -> str:
+        if atribute == 'Null':
+            return 'Null'
         if atribute == 'tak':
             return '1'
         else:
