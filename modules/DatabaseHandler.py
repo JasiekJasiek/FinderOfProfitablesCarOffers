@@ -8,7 +8,7 @@ class DatabaseHandler:
     database = connection.cursor()
     
     @staticmethod
-    def is_already_in_database(URL) -> bool:
+    def is_already_in_database(URL: str) -> bool:
         DatabaseHandler.database.execute(f"SELECT Count(*) FROM Cars WHERE URL = '{URL}'")
         response = DatabaseHandler.database.fetchall()
         if response[0][0] == 1:
@@ -16,10 +16,14 @@ class DatabaseHandler:
         return False
     
     @staticmethod
-    def add_new_car_to_database(car: Car, URL) -> None:
+    def add_new_car_to_database(car: Car, URL: str) -> None:
         db_row = car.to_list()
         db_row.append(URL)
         DatabaseHandler.database.execute("INSERT INTO Cars VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)", db_row)
         DatabaseHandler.connection.commit()
 
-  
+    @staticmethod
+    def print_all() -> None:
+        DatabaseHandler.database.execute("SELECT * FROM Cars")
+        response = DatabaseHandler.database.fetchall()
+        print(response)
