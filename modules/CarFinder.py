@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from modules.DatabaseHandler import DatabaseHandler
+from time import sleep
 
 class CarFinder:
 
@@ -15,6 +16,9 @@ class CarFinder:
         self.response = requests.get(self.base_url)
         soup = BeautifulSoup(self.response.text, 'html.parser')
         first_offer_url = soup.find('h1')
+        if first_offer_url is None:
+            sleep(5)
+            return self.look_for_new_car()
         first_offer_url= str(first_offer_url.find('a'))
         url = self.extract_url_from_html_tag(first_offer_url)
         if DatabaseHandler.is_already_in_database(url):
