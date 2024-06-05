@@ -38,8 +38,8 @@ class Scraper:
         for _ in range(cnt):
             arr.remove(None)
 
-    def convert_accident_free(self, atribute: str) -> bool:
-        if atribute == 'Tak':
+    def convert_accident_free(self, atribute: str) -> str:
+        if atribute == 'tak':
             return '1'
         else:
             return '0'
@@ -62,6 +62,7 @@ class Scraper:
             values.append((self.dictionary[ header ], dictionary[ self.dictionary[ header ] ]))
         values.sort(key= lambda x: x[0])
         values_res = [value for [header, value] in values]
+        print(values_res[ 0 ])
         return (self.convert_accident_free(values_res[ 0 ]), values_res[ 1 ], values_res[ 2 ], self.convert_exploitation(values_res[ 3 ]), values_res[ 4 ], values_res[ 5 ], values_res[ 6 ], values_res[ 7 ])
 
     def scrap(self, URL: str) -> Car:
