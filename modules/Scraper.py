@@ -66,7 +66,7 @@ class Scraper:
         values_res = [value for [header, value] in values]
         return (self.convert_accident_free(values_res[ 0 ]), values_res[ 1 ], values_res[ 2 ], self.convert_exploitation(values_res[ 3 ]), values_res[ 4 ], values_res[ 5 ], values_res[ 6 ], values_res[ 7 ])
 
-    def scrap(self, URL: str) -> Car:
+    def scrap_car_atributes(self, URL: str) -> Car:
         page = requests.get(URL)
         soup = BeautifulSoup(page.content, 'html.parser')
         atributes = soup.find_all(class_ = 'ooa-162vy3d e18eslyg3')
