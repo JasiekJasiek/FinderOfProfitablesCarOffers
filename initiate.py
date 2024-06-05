@@ -16,6 +16,6 @@ conection.close()
 
 scraper = Scraper()
 
-car = scraper.scrap('https://www.otomoto.pl/osobowe/oferta/volkswagen-golf-vw-golf-v-kombi-zadbany-13700-do-negocjacji-ID6Goruz.html')
+car = scraper.scrap_car_atributes('https://www.otomoto.pl/osobowe/oferta/volkswagen-golf-vw-golf-v-kombi-zadbany-13700-do-negocjacji-ID6Goruz.html')
 
 DatabaseHandler.add_new_car_to_database(car, 'https://www.otomoto.pl/osobowe/oferta/volkswagen-golf-vw-golf-v-kombi-zadbany-13700-do-negocjacji-ID6Goruz.html')
