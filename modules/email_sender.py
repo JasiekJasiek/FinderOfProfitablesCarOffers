@@ -2,7 +2,6 @@ import smtplib
 import ssl
 from email.mime.text import MIMEText
 
-#CENA, BEZWYPADKOWOŚĆ, PRZEBIEG < odchylenie standardowe od śreniej, 
 
 class Email_sender:
     
