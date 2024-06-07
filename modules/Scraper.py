@@ -73,7 +73,11 @@ class Scraper:
         if atributes == None:
             sleep(5)
             return self.scrap_car_atributes(URL)
-        atributes.append(('price', soup.find(class_ = 'offer-price__number eqdspoq4 ooa-o7wv9s er34gjf0').text.replace(' ', '')))
-        self.remove_none(atributes)
+        try:
+            atributes.append(('price', soup.find(class_ = 'offer-price__number e1mlrgts4 ooa-1jtct0k er34gjf0').text.replace(' ', '')))
+                                                        
+        except:
+            atributes.append(('price', 'Null'))
+        self.remove_none(atributes)                    
         atributes = self.adjust_atributes(atributes)
         return Car(atributes)
