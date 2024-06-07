@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 class EmailSender:
     
     @staticmethod
-    def send_email(email='mierzickiszymon1@gmail.com') -> None:
+    def send_email(email) -> None:
         sender = 'finderofprofitablescaroffers@gmail.com'
         reciver = [str(email)]
         s = smtplib.SMTP('smtp.gmail.com', 587)
