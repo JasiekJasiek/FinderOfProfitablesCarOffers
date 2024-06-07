@@ -5,8 +5,8 @@ class Car:
         self.brand = atributes[ 1 ]
         self.course = atributes[ 2 ]
         self.exploitation = atributes[ 3 ]
-        self.horse_power = atributes[ 4 ]
-        self.model = atributes[ 5 ]
+        self.model = atributes[ 4 ]
+        self.horse_power = atributes[ 5 ]
         self.price = atributes[ 6 ]
         self.production_year = atributes[ 7 ]
 
