@@ -39,8 +39,8 @@ class Scraper:
             arr.remove(None)
 
     def convert_accident_free(self, atribute: str) -> str:
-        if atribute == 'Null':
-            return 'Null'
+        if atribute == 'null':
+            return 'null'
         if atribute == 'tak':
             return '1'
         else:
@@ -59,7 +59,7 @@ class Scraper:
         values = [('price', dictionary[ 'price' ])]
         for header in self.headers:
             if not dictionary.__contains__(self.dictionary[ header ]):
-                dictionary[ self.dictionary[ header ] ] = 'Null'
+                dictionary[ self.dictionary[ header ] ] = 'null'
         for header in self.headers:
             values.append((self.dictionary[ header ], dictionary[ self.dictionary[ header ] ]))
         values.sort(key= lambda x: x[0])
@@ -77,7 +77,7 @@ class Scraper:
             atributes.append(('price', soup.find(class_ = 'offer-price__number e1mlrgts4 ooa-1jtct0k er34gjf0').text.replace(' ', '')))
                                                         
         except:
-            atributes.append(('price', 'Null'))
+            atributes.append(('price', 'null'))
         self.remove_none(atributes)                    
         atributes = self.adjust_atributes(atributes)
         return Car(atributes)
