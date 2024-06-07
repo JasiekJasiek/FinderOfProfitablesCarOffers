@@ -9,7 +9,7 @@ from modules.Scraper import Scraper
 from modules.Car import Car
 from modules.CarFinder import CarFinder
 
-from modules.functions import get_soup
+from modules.Functions import get_soup
 
 def read_all_cars() -> list[str]:
     with open('resources/cars.txt', 'r') as f:
