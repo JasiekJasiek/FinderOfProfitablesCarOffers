@@ -3,7 +3,7 @@ import ssl
 from email.mime.text import MIMEText
 
 
-class Email_sender:
+class EmailSender:
     
     @staticmethod
     def send_email(email='mierzickiszymon1@gmail.com') -> None:
