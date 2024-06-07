@@ -29,19 +29,25 @@ finder = CarFinder()
 base_url = 'https://www.otomoto.pl/osobowe/'
 page_part_ulr = '?page='
 
-test = [cars[ 3 ], 'lamborghini', 'ferrari']
-
 all_cars_url = set()
 
+curr_car = 1
 #iterate through all car brands and extract all cars urls
-for car in test:
+for car in cars:
+
     curr_url = base_url + car + page_part_ulr + str(1)
-
     soup = get_soup(curr_url)
-
-    page_number = min(int(soup.find_all(class_ = 'ooa-g4wbjr e1y5xfcl0')[-1].text), 500)
+    pages_found = soup.find_all(class_ = 'ooa-g4wbjr e1y5xfcl0')
+    if pages_found == []:
+        page_number = 1 
+    else:
+        page_number = min(int(pages_found[-1].text), 500)
 
     for i in range(page_number):
+        os.system('cls')
+        print(f'Collecting cars from all brands: {curr_car}/{len(cars)}')
+        print(f'Current brand: {car}')
+        print(f'Current page: {i + 1}/{page_number}')
         curr_url = base_url + car + page_part_ulr + str(i)
         soup = get_soup(curr_url)
         cars_table = soup.find_all(class_ = 'ooa-10gfd0w e1i3khom1')
@@ -49,14 +55,15 @@ for car in test:
         cars_urls = [finder.extract_url_from_html_tag(str(car)) for car in cars_table]
         for url in cars_urls:
             all_cars_url.add(url)
-
+    curr_car += 1
+    
 #scrap all cars atributes and save them in database
 car_number = len(all_cars_url)
 i = 1
 scraper = Scraper()
 for url in all_cars_url:
     os.system('cls')
-    print(f'{i}/{car_number}')
+    print(f'Collecting all cars atributes: {i}/{car_number}')
     i += 1
     car = scraper.scrap_car_atributes(url)
     DatabaseHandler.add_new_car_to_database(car, url)
