@@ -1,6 +1,6 @@
-from bs4 import BeautifulSoup
-import requests
+from modules.functions import get_soup
 from modules.Car import Car
+from time import sleep
 
 class Scraper:
 
@@ -67,10 +67,12 @@ class Scraper:
         return (self.convert_accident_free(values_res[ 0 ]), values_res[ 1 ], values_res[ 2 ], self.convert_exploitation(values_res[ 3 ]), values_res[ 4 ], values_res[ 5 ], values_res[ 6 ], values_res[ 7 ])
 
     def scrap_car_atributes(self, URL: str) -> Car:
-        page = requests.get(URL)
-        soup = BeautifulSoup(page.content, 'html.parser')
+        soup = get_soup(URL)
         atributes = soup.find_all(class_ = 'ooa-162vy3d e18eslyg3')
         atributes = [ self.remove_headers(atribute.text) for atribute in atributes]
+        if atributes == None:
+            sleep(5)
+            return self.scrap_car_atributes(URL)
         atributes.append(('price', soup.find(class_ = 'offer-price__number eqdspoq4 ooa-o7wv9s er34gjf0').text.replace(' ', '')))
         self.remove_none(atributes)
         atributes = self.adjust_atributes(atributes)
