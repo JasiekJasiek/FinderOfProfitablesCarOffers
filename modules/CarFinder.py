@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from modules.Functions import get_soup
 from modules.DatabaseHandler import DatabaseHandler
 from time import sleep
 
@@ -14,8 +13,7 @@ class CarFinder:
         return html_tag[0:html_tag.find('"')]
     
     def look_for_new_car(self):
-        self.response = requests.get(self.base_url)
-        soup = BeautifulSoup(self.response.text, 'html.parser')
+        soup = self.response = get_soup(self.base_url)
         first_offer_url = soup.find('h1')
         if first_offer_url is None:
             sleep(5)
