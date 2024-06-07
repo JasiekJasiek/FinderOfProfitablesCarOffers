@@ -1,4 +1,4 @@
-from modules.functions import get_soup
+from modules.Functions import get_soup
 from modules.Car import Car
 from time import sleep
 
