@@ -5,7 +5,7 @@ import math
 
 class DatabaseHandler:
     
-    connection = sqlite3.connect('otomoto.db')
+    connection = sqlite3.connect('resources/otomoto.db')
     database = connection.cursor()
     
     @staticmethod
