@@ -11,9 +11,9 @@ class EmailSender:
        
         port = 587 
         smtp_server = "smtp.gmail.com" #host for gmail
-        sender_email = "finderofprofitablescaroffers@gmail.com" #sender email adress
+        sender_email = "" #sender email adress
         receiver_email = email #receiver email adress
-        password = 'yjyx cchh pyjp haue' #app password for sender email account
+        password = '' #app password for sender email account
         body = 'I FOUND NEW INTRESTING OFFER JUST FOR U <3 '+' '+ str(url)
         price_chart_path = 'resources\charts\price_chart.jpg'
         course_chart_path = 'resources\charts\course_chart.jpg'
