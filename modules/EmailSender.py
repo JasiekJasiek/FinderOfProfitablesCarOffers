@@ -7,14 +7,19 @@ from email import encoders
 class EmailSender:
     
     @staticmethod
-    def send_email(email,url) -> None:
+    def send_email(email:str,url:str,car_category:int) -> None: 
        
         port = 587 
         smtp_server = "smtp.gmail.com" #host for gmail
-        sender_email = "" #sender email adress
+        sender_email = "finderofprofitablescaroffers@gmail.com" #sender email adress
         receiver_email = email #receiver email adress
-        password = '' #app password for sender email account
-        body = 'I FOUND NEW INTRESTING OFFER JUST FOR U <3 '+' '+ str(url)
+        password = 'yjyx cchh pyjp haue' #app password for sender email account
+
+        if car_category == 1:
+            body = 'I FOUND GOOD OFFER JUST FOR U <3 '+' '+ str(url)
+        else:
+            body = 'I FOUND VERY GOOD OFFER JUST FOR U <3 '+' '+ str(url)
+        
         price_chart_path = 'resources\price_chart.jpg'
         course_chart_path = 'resources\course_chart.jpg'
         msg = MIMEMultipart()
