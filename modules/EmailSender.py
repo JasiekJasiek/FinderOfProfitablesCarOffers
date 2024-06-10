@@ -15,8 +15,8 @@ class EmailSender:
         receiver_email = email #receiver email adress
         password = '' #app password for sender email account
         body = 'I FOUND NEW INTRESTING OFFER JUST FOR U <3 '+' '+ str(url)
-        price_chart_path = 'resources\charts\price_chart.jpg'
-        course_chart_path = 'resources\charts\course_chart.jpg'
+        price_chart_path = 'resources\price_chart.jpg'
+        course_chart_path = 'resources\course_chart.jpg'
         msg = MIMEMultipart()
         msg["From"] = sender_email
         msg["To"] = receiver_email
