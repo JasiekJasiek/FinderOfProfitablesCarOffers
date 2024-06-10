@@ -13,7 +13,7 @@ class ChartMaker:
         plt.xlabel('Index')
         plt.ylabel('Price')
         plt.legend()
-        plt.savefig('resources/charts/price_chart.jpg')  
+        plt.savefig('resources/price_chart.jpg')  
         plt.clf()
         
     @staticmethod
@@ -27,5 +27,5 @@ class ChartMaker:
         plt.xlabel('Index')
         plt.ylabel('Course')
         plt.legend()
-        plt.savefig('resources/charts/course_chart.jpg') 
+        plt.savefig('resources/course_chart.jpg') 
         plt.clf() 
