@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import statistics
 
 class ChartMaker:
 
@@ -18,10 +19,10 @@ class ChartMaker:
         
     @staticmethod
     def make_course_chart(courses: list[int], offer_course: int) -> None:
-        avg_course = sum(courses) / len(courses)
+        median_course = statistics.median(courses)
         courses.sort()
         plt.scatter( [i for i in range(len(courses))], courses, label='Offers from Database')
-        plt.axhline(y=avg_course, color='r', linestyle='-', label=f'Avg course = {avg_course:.0f} PLN')
+        plt.axhline(y=median_course, color='r', linestyle='-', label=f'Avg course = {median_course:.0f} PLN')
         plt.axhline(y=offer_course, color='y', linestyle='--', label=f'This offer course = {offer_course:.0f} PLN')
         plt.title('Course distribution')
         plt.xlabel('Index')
