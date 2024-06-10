@@ -24,12 +24,6 @@ class DatabaseHandler:
         DatabaseHandler.connection.commit()
 
     @staticmethod
-    def print_all() -> None:
-        DatabaseHandler.database.execute("SELECT * FROM Cars")
-        response = DatabaseHandler.database.fetchall()
-        print(response)
-
-    @staticmethod
     def get_prices_for_similar_car(car: Car) -> list[int]:
         DatabaseHandler.database.execute(f"""
                                         SELECT price 
@@ -45,9 +39,9 @@ class DatabaseHandler:
         return [ int(line[ 0 ]) for line in response]
     
     @staticmethod
-    def get_avg_price_for_similar_car_through_years(car: Car) -> list[int]:
+    def get_courses_for_similar_car(car: Car) -> list[int]:
         DatabaseHandler.database.execute(f"""
-                                        SELECT production_year, AVG(price) 
+                                        SELECT course 
                                         FROM Cars 
                                         WHERE brand = '{car.brand}' AND 
                                               model = '{car.model}' AND 
@@ -55,8 +49,8 @@ class DatabaseHandler:
                                               production_year >= '{int(car.production_year) - 1}' AND
                                               horse_power <= '{int(car.horse_power) + 20}' AND
                                               horse_power >= '{int(car.horse_power) - 20}'
-                                        GROUP BY production_year
                                         """)
         response = DatabaseHandler.database.fetchall()
-        return ([int(line[ 0 ]) for line in response], [int(line[ 1 ]) for line in response])
+        return [ int(line[ 0 ]) for line in response]
+    
     
