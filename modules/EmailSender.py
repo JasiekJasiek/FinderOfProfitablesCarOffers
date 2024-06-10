@@ -48,6 +48,3 @@ class EmailSender:
             server.sendmail(sender_email, receiver_email, msg.as_string())
             server.quit()
             
-
-EmailSender.send_email("janszala.04@gmail.com","https://github.com/JasiekJasiek/FinderOfProfitablesCarOffers/tree/main")
-print("sent")
