@@ -11,11 +11,11 @@ class EmailSender:
        
         port = 587 
         smtp_server = "smtp.gmail.com" #host for gmail
-        sender_email = "finderofprofitablescaroffers@gmail.com" #sender email adress
-        receiver_email = email #receiver email adress
-        password = 'yjyx cchh pyjp haue' #app password for sender email account
+        sender_email = "finderofprofitablescaroffers@gmail.com" 
+        receiver_email = email 
+        password = 'yjyx cchh pyjp haue'
 
-        if car_category == 1:
+        if car_category == 1: #decisions about the profitability of the offer
             body = 'I FOUND GOOD OFFER JUST FOR U <3 '+' '+ str(url)
         else:
             body = 'I FOUND VERY GOOD OFFER JUST FOR U <3 '+' '+ str(url)
@@ -28,7 +28,7 @@ class EmailSender:
         msg["Subject"] = "NEW CAR OFFER!"
         msg.attach(MIMEText(body,"plain"))
 
-        with open(price_chart_path,"rb") as attachment: #price_chart
+        with open(price_chart_path,"rb") as attachment: #adding a price chart to email
             part = MIMEBase('application','octet-stream')
 
             part.set_payload(attachment.read())
@@ -36,7 +36,7 @@ class EmailSender:
             part.add_header('Content-Disposition',f"attachment; filename={price_chart_path}")
             msg.attach(part)
         
-        with open(course_chart_path,"rb") as attachment: #course_chart
+        with open(course_chart_path,"rb") as attachment: #adding a course chart to email
             part = MIMEBase('application','octet-stream')
             part.set_payload(attachment.read())
             encoders.encode_base64(part)
