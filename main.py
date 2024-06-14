@@ -7,7 +7,7 @@ from modules.Scraper import Scraper
 from time import sleep
 import statistics
 
-def worth_of_car(car: Car) -> int:
+def worth_of_car(car: Car) -> int:    #car valuation
     def accident_free(car: Car) -> bool:
         if car.accident_free == '1':
             return True
@@ -62,12 +62,12 @@ def worth_of_car(car: Car) -> int:
         return 2
 
 
-email = input('Please type your email :')
+email = input('Please type your email :') #email receiver
 finder = CarFinder()
 scraper = Scraper()
 while True:
     
-    sleep(60)
+    sleep(60) 
     url = finder.look_for_new_car()
     
     if url == None:
