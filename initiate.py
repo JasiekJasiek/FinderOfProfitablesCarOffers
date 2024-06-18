@@ -25,7 +25,7 @@ conection.close()
 cars = read_all_cars()
 finder = CarFinder()
 
-base_url = 'https://www.otomoto.pl/osobowe/'
+base_url = 'https://www.otomoto.pl/osobowe/'    
 page_part_ulr = '?page='
 
 all_cars_url = set()
@@ -49,7 +49,7 @@ for car in cars:
         print(f'Current page: {i + 1}/{page_number}')
         curr_url = base_url + car + page_part_ulr + str(i)
         soup = get_soup(curr_url)
-        cars_table = soup.find_all(class_ = 'ooa-10gfd0w e1i3khom1')
+        cars_table = soup.find_all(class_ = 'ooa-yca59n e1vic7eh0')
         cars_table = [car.find('a') for car in cars_table]
         cars_urls = [finder.extract_url_from_html_tag(str(car)) for car in cars_table]
         for url in cars_urls:
